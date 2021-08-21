@@ -1,1 +1,2 @@
-# UMass-Map-DGL
+# UMass Map DGL
+
