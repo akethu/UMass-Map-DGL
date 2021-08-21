@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Around UMass with DGL</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+                font-size: 15px;
+                line-height: 1.7;
+                color: #c4c3ca;
+                background-color: #1f2029;
+                overflow-x: hidden;
+                height: 100%;
+            }
+            .btn{  
+                border-radius: 4px;
+                height: 34px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                -webkit-transition : all 200ms linear;
+                transition: all 200ms linear;
+                padding: 0 20px;
+                letter-spacing: 1px;
+                display: -webkit-inline-flex;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
+                align-items: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
+                justify-content: center;
+                -ms-flex-pack: center;
+                text-align: center;
+                border: none;
+                background-color: #ffeba7;
+                color: #102770;
+                box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+            }
+            .btn:active,
+            .btn:focus{  
+                background-color: #971B2F;
+                color: #ffeba7;
+                box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+            }
+            .btn:hover{  
+                background-color: #971B2F;
+                color: #ffeba7;
+                box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+            }
+            .select {
+                padding: 0 20px;
+                height: 34px;
+            }
+            .data{
+                font-size: 20px;
+            }
+            .logo{
+                /* height: 30px; */
+                z-index: 100;
+                color: azure;
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 10px;
+                background-color: #971B2F;
+                border: 1px wheat;
+                font-size: 20px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border-bottom: 5px solid black;
+            }
+            .footer{
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                text-align: center;
+                vertical-align: bottom;
+                background-color: #971b2f;
+                border-top:1px solid azure;
+            }
+            @media screen and (max-width: 639px) {
+                    .footer{
+                        display: none;
+                    }
+                    .btn{
+                        margin-top: 5px;
+                    }
+                    .select{
+                        margin: 3px;
+                    }
+                    #reset{
+                        margin-bottom: 20px;
+                    }
+                    .logo{
+                        text-align: right;
+                    }
+            }
+            @media screen and (max-width: 764px) {
+                    .footer{
+                        /* display: none; */
+                    }
+                    .btn{
+                        margin-top: 5px;
+                    }
+                    .select{
+                        margin: 3px;
+                    }
+                    #reset{
+                        margin-bottom: 20px;
+                    }
+                    .logo{
+                        text-align: right;
+                    }
+            }
+            @media screen and (max-width: 642px) {
+                    .footer{
+                        display: none;
+                    }
+                    .btn{
+                        margin-top: 5px;
+                    }
+                    .select{
+                        margin: 3px;
+                    }
+                    #reset{
+                        margin-bottom: 20px;
+                    }
+                    .logo{
+                        text-align: right;
+                    }
+                    #break{
+                        visibility: visible;
+                    }
+            }
+            .logoheader{
+                background-color: whitesmoke ;
+                color: black;
+                font-weight: 600;
+                font-size: 34px;
+                padding: auto;
+                padding-left: 10px;
+                /* font-family: 'Staatliches', cursive; */
+                letter-spacing: 1px;
+            }
+            #break{
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Poppins', sans-serif; background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');">
+        <div class="logo">University of Massachusetts Amherst</div>
+        <div class="logoheader">Around UMass with <a href="https://docs.dgl.ai/" target="_blank" style="text-decoration: none; color: black;">DGL</a> <span style="text-align: end; font-size: small;"><a href="https://akethu.github.io/adithyakethu/" style="text-decoration: none; color: gray;">AK</a></span></div>
+        <!-- <button onclick="location.href=''">Execute</button>
+        <br>
+        {% if data %}
+        {{data | safe}}
+        {% endif %} -->
+        <center>
+        <br><br><br><br>
+        <form action="/nearby/" method="post">
+            {% csrf_token %}
+            <select name="option0" id="" required class="select">
+                <option value selected disabled>Choose</option>
+                <option value="1">Central Residential Area</option>
+                <option value="2">Orchard Hill Residential Area</option>
+                <option value="9">OHill Observatory</option>
+                <option value="6">Franklin Dining Hall</option>
+                <option value="8">Fernald Hall</option>
+                <option value="7">French Hall</option>
+                <option value="10">Clark Hall</option>
+                <option value="23">Morrill Science Center</option>
+                <option value="11">Olver, John W. Design Building</option>
+                <option value="13">Studio Arts Building</option>
+                <option value="4">Newman Center</option>
+                <option value="15">Isenberg School of Management Building</option>
+                <option value="14">Fine Arts Center</option>
+                <option value="24">UMass Campus Pond</option>
+                <option value="12">Integrative Learning Center</option>
+                <option value="27">Skinner Hall</option>
+                <option value="54">Integrated Sciences Building</option>
+                <option value="55">Life Science Laboratories</option>
+                <option value="5">Worcester Dining Hall</option>
+                <option value="3">Northeast Residential Area</option>
+                <option value="29">Lederle Graduate Research Center</option>
+                <option value="28">Physical Sciences Building</option>
+                <option value="40">Marcus Hall</option>
+                <option value="30">Conte Polymer Research Center</option>
+                <option value="39">Marston Hall</option>
+                <option value="38">Gunness Laboratory</option>
+                <option value="37">PVTA Facility Buildings</option>
+                <option value="34">Physical Plant Building</option>
+                <option value="32">Mullins Memorial Center</option>
+                <option value="33">Kennedy, John Francis Champions Center</option>
+                <option value="22">CHC Residential Area</option>
+                <option value="21">Tobin Hall</option>
+                <option value="18">Hicks Physical Education Building</option>
+                <option value="17">Bartlett Hall</option>
+                <option value="19">Goodell Building</option>
+                <option value="44">South College</option>
+                <option value="19">Goodell Building</option>
+                <option value="16">DuBois Library</option>
+                <option value="56">Chapel</option>
+                <option value="41">Herter Hall</option>
+                <option value="25">Student Union</option>
+                <option value="26">Campus Center</option>
+                <option value="35">Stockbridge Hall</option>
+                <option value="31">Machmer Hall</option>
+                <option value="43">Dickinson Hall</option>
+                <option value="42">Recreation Center</option>
+                <option value="36">UPlay Fields</option>
+                <option value="20">Boyden Gymnasium</option>
+                <option value="48">Hampshire Dining Hall</option>
+                <option value="47">Berkshire Dining Hall</option>
+                <option value="46">Southwest Residential Area</option>
+                <option value="45">McGuirk Alumni Stadium</option>
+                <option value="49">Lincoln Apartments</option>
+                <option value="50">Kendrick Place</option>
+                <option value="53">Amherst Regional High School</option>
+                <option value="51">US Post Office</option>
+                <option value="52">Amherst Center</option>
+            </select>
+            {{data_external}}
+            <input type="submit" value="Nearby" class="btn">
+            <br><br>
+            <div class="data">
+                <div style="color: #ffeba7;">{{data0}}</div><br>
+                {{data1}}
+            </div>
+            <br>
+        </form>
+
+        <br>
+        <form action="/route/" method="post">
+            {% csrf_token %}
+            <select name="option1" id="" required class="select" >
+                <option value selected disabled>From</option>
+                <option value="1">Central Residential Area</option>
+                <option value="2">Orchard Hill Residential Area</option>
+                <option value="9">OHill Observatory</option>
+                <option value="6">Franklin Dining Hall</option>
+                <option value="8">Fernald Hall</option>
+                <option value="7">French Hall</option>
+                <option value="10">Clark Hall</option>
+                <option value="23">Morrill Science Center</option>
+                <option value="11">Olver, John W. Design Building</option>
+                <option value="13">Studio Arts Building</option>
+                <option value="4">Newman Center</option>
+                <option value="15">Isenberg School of Management Building</option>
+                <option value="14">Fine Arts Center</option>
+                <option value="24">UMass Campus Pond</option>
+                <option value="12">Integrative Learning Center</option>
+                <option value="27">Skinner Hall</option>
+                <option value="54">Integrated Sciences Building</option>
+                <option value="55">Life Science Laboratories</option>
+                <option value="5">Worcester Dining Hall</option>
+                <option value="3">Northeast Residential Area</option>
+                <option value="29">Lederle Graduate Research Center</option>
+                <option value="28">Physical Sciences Building</option>
+                <option value="40">Marcus Hall</option>
+                <option value="30">Conte Polymer Research Center</option>
+                <option value="39">Marston Hall</option>
+                <option value="38">Gunness Laboratory</option>
+                <option value="37">PVTA Facility Buildings</option>
+                <option value="34">Physical Plant Building</option>
+                <option value="32">Mullins Memorial Center</option>
+                <option value="33">Kennedy, John Francis Champions Center</option>
+                <option value="22">CHC Residential Area</option>
+                <option value="21">Tobin Hall</option>
+                <option value="18">Hicks Physical Education Building</option>
+                <option value="17">Bartlett Hall</option>
+                <option value="19">Goodell Building</option>
+                <option value="44">South College</option>
+                <option value="19">Goodell Building</option>
+                <option value="16">DuBois Library</option>
+                <option value="56">Chapel</option>
+                <option value="41">Herter Hall</option>
+                <option value="25">Student Union</option>
+                <option value="26">Campus Center</option>
+                <option value="35">Stockbridge Hall</option>
+                <option value="31">Machmer Hall</option>
+                <option value="43">Dickinson Hall</option>
+                <option value="42">Recreation Center</option>
+                <option value="36">UPlay Fields</option>
+                <option value="20">Boyden Gymnasium</option>
+                <option value="48">Hampshire Dining Hall</option>
+                <option value="47">Berkshire Dining Hall</option>
+                <option value="46">Southwest Residential Area</option>
+                <option value="45">McGuirk Alumni Stadium</option>
+                <option value="49">Lincoln Apartments</option>
+                <option value="50">Kendrick Place</option>
+                <option value="53">Amherst Regional High School</option>
+                <option value="51">US Post Office</option>
+                <option value="52">Amherst Center</option>
+            </select>
+            <select name="option2" id="" required class="select" id="form">
+                <option value selected disabled>To</option>
+                <option value="1">Central Residential Area</option>
+                <option value="2">Orchard Hill Residential Area</option>
+                <option value="9">OHill Observatory</option>
+                <option value="6">Franklin Dining Hall</option>
+                <option value="8">Fernald Hall</option>
+                <option value="7">French Hall</option>
+                <option value="10">Clark Hall</option>
+                <option value="23">Morrill Science Center</option>
+                <option value="11">Olver, John W. Design Building</option>
+                <option value="13">Studio Arts Building</option>
+                <option value="4">Newman Center</option>
+                <option value="15">Isenberg School of Management Building</option>
+                <option value="14">Fine Arts Center</option>
+                <option value="24">UMass Campus Pond</option>
+                <option value="12">Integrative Learning Center</option>
+                <option value="27">Skinner Hall</option>
+                <option value="54">Integrated Sciences Building</option>
+                <option value="55">Life Science Laboratories</option>
+                <option value="5">Worcester Dining Hall</option>
+                <option value="3">Northeast Residential Area</option>
+                <option value="29">Lederle Graduate Research Center</option>
+                <option value="28">Physical Sciences Building</option>
+                <option value="40">Marcus Hall</option>
+                <option value="30">Conte Polymer Research Center</option>
+                <option value="39">Marston Hall</option>
+                <option value="38">Gunness Laboratory</option>
+                <option value="37">PVTA Facility Buildings</option>
+                <option value="34">Physical Plant Building</option>
+                <option value="32">Mullins Memorial Center</option>
+                <option value="33">Kennedy, John Francis Champions Center</option>
+                <option value="22">CHC Residential Area</option>
+                <option value="21">Tobin Hall</option>
+                <option value="18">Hicks Physical Education Building</option>
+                <option value="17">Bartlett Hall</option>
+                <option value="19">Goodell Building</option>
+                <option value="44">South College</option>
+                <option value="19">Goodell Building</option>
+                <option value="16">DuBois Library</option>
+                <option value="56">Chapel</option>
+                <option value="41">Herter Hall</option>
+                <option value="25">Student Union</option>
+                <option value="26">Campus Center</option>
+                <option value="35">Stockbridge Hall</option>
+                <option value="31">Machmer Hall</option>
+                <option value="43">Dickinson Hall</option>
+                <option value="42">Recreation Center</option>
+                <option value="36">UPlay Fields</option>
+                <option value="20">Boyden Gymnasium</option>
+                <option value="48">Hampshire Dining Hall</option>
+                <option value="47">Berkshire Dining Hall</option>
+                <option value="46">Southwest Residential Area</option>
+                <option value="45">McGuirk Alumni Stadium</option>
+                <option value="49">Lincoln Apartments</option>
+                <option value="50">Kendrick Place</option>
+                <option value="53">Amherst Regional High School</option>
+                <option value="51">US Post Office</option>
+                <option value="52">Amherst Center</option>
+            </select>
+            <div id="break"><br></div>
+            <input type="submit" value="Find Route" class="btn">
+
+            <br><br>
+            <div class="data">
+                <div style="color: #ffeba7; ">{{dataa}}</div><br>
+                {{data2}}
+                <br><br>
+                {{data3}} {% if data3 %} || {% endif %} {{data4}}
+            </div>
+        </form>
+    
+    </center>
+        <br><br>
+        <div style="display: flex; width: 100%; justify-content: center;">
+            <button onclick="location.href='{% url 'home' %}'" class="btn" id="reset">Reset</button>
+        </div>
+        <div class="footer">Go <a href="https://www.umass.edu/" target="_blank" style="color: white; text-decoration: none;">UMass</a>! <span style="font-size: 10px; color: lightgray; font-family: 'Poppins', sans-serif;">AK</span></div>
+    </body>
+</html>
