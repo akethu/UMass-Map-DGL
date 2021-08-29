@@ -75,9 +75,10 @@ tensorboard-plugin-wit==1.8.0
 termcolor==1.1.0
 terminaltables==3.1.0
 tifffile==2021.4.8
+-f https://download.pytorch.org/whl/torch_stable.html
 torch==1.8.1+cpu
 # https://download.pytorch.org/whl/cpu/torch-1.8.1-cp37-none-macosx_10_9_x86_64.whl
-https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
+# https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
 torchvision==0.9.1+cpu
 tqdm==4.60.0
 typing-extensions==3.7.4.3
