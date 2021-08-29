@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-# import os
+import os
 import django_heroku
 from pathlib import Path
 
@@ -127,3 +127,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") 
+STATICFILES_STORAGE='whitenoise.django.GzipManifestStaticFilesStorage'
