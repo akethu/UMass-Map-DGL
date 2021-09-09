@@ -18,6 +18,10 @@ Shows the nearby buildings to a speciﬁc building and also the shortest distanc
 - Shows the shortest/optimal path between any two buildings on the UMass campus.
 - Shows the duration of travel as well as the distance (~shortest) between the buildings.
 
+## License
+
+Distributed under MIT open license.
+
 ## Contact
 
 You can contact me at akethu@umass.edu
