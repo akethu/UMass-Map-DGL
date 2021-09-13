@@ -4,13 +4,9 @@ Coded using Python, Django, Torch and Deep Graph Learning libraries. An interact
 
 Shows the nearby buildings to a speciﬁc building and also the shortest distance (along with magnitude and duration of travel) between any two buildings.
 
-## Getting started
+## View Website
 
-- Clone the repository to your local machine.
-- `cd` to the project directory.
-- Run the command `python3 manage.py runserver` in the terminal window.
-- You will be redirected to your default browser with the website open.
-- Voila! That's it. Feel free to navigate throught the website.
+Access the python django web app here: https://around-umass-dgl.herokuapp.com
 
 ## Features
 
