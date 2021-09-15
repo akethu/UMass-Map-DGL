@@ -6,7 +6,7 @@ Shows the nearby buildings to a speciﬁc building and also the shortest distanc
 
 ## View Web App
 
-Hosted the applications using Heroku. Access the python django web app <a href="https://around-umass-dgl.herokuapp.com" target="_blank">here</a> (https://around-umass-dgl.herokuapp.com).
+Hosted the web application using Heroku. Access the python django web app <a href="https://around-umass-dgl.herokuapp.com" target="_blank">here</a> (https://around-umass-dgl.herokuapp.com).
 
 ## Features
 
