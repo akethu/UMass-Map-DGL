@@ -1,6 +1,6 @@
 # UMass Map DGL
 
-Coded using Python, Django, Torch and Deep Graph Learning libraries. An interactive navigator for my college, <b>UMass Amherst</b>, using tensor graphs and deep graph learning techniques.
+Coded from scratch using Python, Django, Torch and Deep Graph Learning libraries. An interactive navigator for my college, <b>UMass Amherst</b>, using tensor graphs and deep graph learning techniques.
 
 Shows the nearby buildings to a speciﬁc building and also the shortest distance (along with magnitude and duration of travel) between any two buildings.
 
